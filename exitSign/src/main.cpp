@@ -1,12 +1,14 @@
+// ToDo: @calebmcd Change this whole main file to account for RGB lights
+
 #include <WiFi.h>
  
 #include <Adafruit_MQTT.h>
  
 #include <Adafruit_MQTT_Client.h>
+
+#define WLAN_SSID       "You're-Blessed-2G"
  
-#define WLAN_SSID       "bean sarwood"
- 
-#define WLAN_PASS       "flamingofucker69"
+#define WLAN_PASS       "thank511"
  
 #define AIO_SERVER      "io.adafruit.com"
  
@@ -14,7 +16,7 @@
  
 #define AIO_USERNAME    "calebmcd"
  
-#define AIO_KEY         "aio_JuCS13LMr88r7zOrXsT6k7EbIK5D"
+#define AIO_KEY         "aio_Ywcr42urpJy4mN309TJPJPFjQsXk"
  
 int output=2;
  
@@ -22,13 +24,13 @@ WiFiClient client;     // Create an ESP8266 WiFiClient class to connect to the M
  
 Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_KEY);        // Setup the MQTT client class by passing in the WiFi client and MQTT server and login details.
  
-Adafruit_MQTT_Subscribe LED_Control = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME "/feeds/exitSign_Control");
+Adafruit_MQTT_Subscribe LED_Control = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME "/feeds/exitSign_control");
  
 void MQTT_connect();
  
 void setup() {
  
-  Serial.begin(115200);
+  Serial.begin(9600);
  
   delay(10);
  
