@@ -1,4 +1,3 @@
-// ToDo: @calebmcd Change this whole main file to account for RGB lights
 #include <WiFi.h>
  
 #include <Adafruit_MQTT.h>
@@ -60,6 +59,7 @@ void flashRed(){
   }
 }
 
+// ToDo: @calebmcd Figure out how to convert uint8_t* to CRGB member. Might not be possible.
 struct CRGB toCRGB(uint8_t* inAIO){
   char* char_value = (char*)inAIO;
 
