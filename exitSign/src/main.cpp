@@ -8,6 +8,12 @@
 
 #include <secrets.h>
 
+#include <AsyncElegantOTA.h>
+
+#include <elegantWebpage.h>
+
+#include <hash.h>
+
 // Fast LED Definitions
 #define LED_PIN     2
 #define NUM_LEDS    10
@@ -29,6 +35,9 @@ Adafruit_MQTT_Subscribe LED_Control = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAM
 void MQTT_connect();
 
 bool greenFlag = false;
+
+// setup OTA server
+AsyncWebServer server(80);
 
 // Flash a chosen color a certain number of times
 void flashGreen(){
@@ -132,14 +141,20 @@ void setup() {
   Serial.println("IP address: "); Serial.println(WiFi.localIP());
  
   mqtt.subscribe(&LED_Control);
+
+  AsyncElegantOTA.begin(&server);    // Start ElegantOTA
+  server.begin();
+  Serial.println("HTTP server started");
  
 }
  
 uint32_t x=0;
  
 void loop() {
+
+  AsyncElegantOTA.loop();
  
-   MQTT_connect();
+  MQTT_connect();
  
 Adafruit_MQTT_Subscribe *subscription;
  
