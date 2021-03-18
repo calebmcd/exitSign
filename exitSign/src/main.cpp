@@ -9,18 +9,6 @@
 #include <fastled.h>
 
 #include <secret.h>
-
-#define WLAN_SSID       "You're-Blessed-2G"
- 
-#define WLAN_PASS       "thank511"
- 
-#define AIO_SERVER      "io.adafruit.com"
- 
-#define AIO_SERVERPORT  1883                  
- 
-#define AIO_USERNAME    aioUser
- 
-#define AIO_KEY         aioKey
  
 int output=2;
  
